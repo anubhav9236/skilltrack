@@ -8,6 +8,8 @@
 
 * **Project Name:** SkillTrack
 * **Tagline:** Discover, track, and conquer student opportunities powered by Appwrite TablesDB.
+* **Live Demo:** [https://skilltrack-seven-blush.vercel.app/](https://skilltrack-seven-blush.vercel.app/)
+* **GitHub Repository:** [https://github.com/anubhav9236/skilltrack](https://github.com/anubhav9236/skilltrack)
 * **Hackathon:** Appwrite Databases Hackathon 2026
 * **Category:** Web Applications / Developer & Student Productivity
 * **Target Audience:** College students, self-taught developers, bootcamp graduates, and open-source contributors.

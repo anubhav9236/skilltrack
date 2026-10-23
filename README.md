@@ -5,9 +5,13 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 [![Vite](https://img.shields.io/badge/Vite-6.1-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
-[![Vercel Ready](https://img.shields.io/badge/Deployment-Vercel_Ready-000000?logo=vercel&logoColor=white)](https://vercel.com)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-skilltrack--seven--blush.vercel.app-success?logo=vercel&logoColor=white)](https://skilltrack-seven-blush.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github&logoColor=white)](https://github.com/anubhav9236/skilltrack)
 
 **SkillTrack** is a modern, student opportunity and application management platform built for the **Appwrite Databases Hackathon 2026**. It empowers students and developers to discover, track, and conquer hackathons, internships, scholarships, certifications, and open-source programs in one organized workspace.
+
+🔗 **Live Deployment:** [https://skilltrack-seven-blush.vercel.app/](https://skilltrack-seven-blush.vercel.app/)  
+📂 **GitHub Repository:** [https://github.com/anubhav9236/skilltrack](https://github.com/anubhav9236/skilltrack)
 
 ---
 
