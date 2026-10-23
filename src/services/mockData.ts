@@ -1,0 +1,115 @@
+import { Opportunity } from '../types/database';
+
+export const DEMO_USER = {
+  $id: 'demo-user-123',
+  name: 'Alex Rivera',
+  email: 'alex.rivera@university.edu',
+};
+
+export const INITIAL_MOCK_OPPORTUNITIES: Opportunity[] = [
+  {
+    $id: 'opp-1',
+    $createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 12).toISOString(),
+    userId: 'demo-user-123',
+    title: 'Appwrite Databases Global Hackathon 2026',
+    organization: 'Appwrite',
+    category: 'Hackathon',
+    description: 'Build innovative web and mobile apps leveraging the new Appwrite TablesDB architecture with modern cloud persistence.',
+    applicationUrl: 'https://dev.to/challenges/appwrite',
+    deadline: new Date(Date.now() + 1000 * 60 * 60 * 24 * 4).toISOString().split('T')[0], // 4 days left
+    status: 'In Progress' as any, // Will normalize to Planning/Applied
+    priority: 'High',
+    notes: 'Submitted initial proposal; finalizing frontend integration with TablesDB SDK and Vite.',
+    isSaved: true,
+  },
+  {
+    $id: 'opp-2',
+    $createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 15).toISOString(),
+    userId: 'demo-user-123',
+    title: 'Google Summer of Code (GSoC) 2026',
+    organization: 'Google Open Source',
+    category: 'Open Source',
+    description: 'Global program focused on bringing new contributors into open source software development. Mentored by leading OSS foundations.',
+    applicationUrl: 'https://summerofcode.withgoogle.com',
+    deadline: new Date(Date.now() + 1000 * 60 * 60 * 24 * 18).toISOString().split('T')[0], // 18 days left
+    status: 'Planning',
+    priority: 'High',
+    notes: 'Reviewed organization list. Selected CNCF and Kubernetes project proposals.',
+    isSaved: true,
+  },
+  {
+    $id: 'opp-3',
+    $createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 8).toISOString(),
+    userId: 'demo-user-123',
+    title: 'Software Engineering Summer Intern 2027',
+    organization: 'Stripe',
+    category: 'Internship',
+    description: 'Work with engineering teams building financial infrastructure for the internet. Core backend systems and developer tooling.',
+    applicationUrl: 'https://stripe.com/jobs/university',
+    deadline: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2).toISOString().split('T')[0], // 2 days left (Urgent!)
+    status: 'Applied',
+    priority: 'High',
+    notes: 'Submitted resume and referral. Completed online assessment.',
+    isSaved: true,
+  },
+  {
+    $id: 'opp-4',
+    $createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 20).toISOString(),
+    userId: 'demo-user-123',
+    title: 'Grace Hopper Celebration Student Scholarship',
+    organization: 'AnitaB.org',
+    category: 'Scholarship',
+    description: 'Full registration, travel, and lodging grant for undergraduate and graduate students to attend the annual GHC conference.',
+    applicationUrl: 'https://ghc.anitab.org/attend/scholarships',
+    deadline: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString().split('T')[0],
+    status: 'Shortlisted',
+    priority: 'Medium',
+    notes: 'Semi-finalist interview scheduled for next month. Prepared personal essay on women in systems engineering.',
+    isSaved: false,
+  },
+  {
+    $id: 'opp-5',
+    $createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 40).toISOString(),
+    userId: 'demo-user-123',
+    title: 'AWS Certified Cloud Practitioner (Student Voucher)',
+    organization: 'Amazon Web Services',
+    category: 'Certification',
+    description: 'Foundational cloud certification assessing overall understanding of the AWS Cloud platform, services, and security.',
+    applicationUrl: 'https://aws.amazon.com/certification/certified-cloud-practitioner',
+    deadline: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString().split('T')[0], // Expired 3 days ago
+    status: 'Selected',
+    priority: 'Medium',
+    notes: 'Exam passed with score of 890! Credential added to LinkedIn profile.',
+    isSaved: false,
+  },
+  {
+    $id: 'opp-6',
+    $createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5).toISOString(),
+    userId: 'demo-user-123',
+    title: 'Major League Hacking (MLH) Fellowship 2026',
+    organization: 'Major League Hacking',
+    category: 'Open Source',
+    description: '12-week remote internship alternative where students contribute to major open source libraries used by millions of developers.',
+    applicationUrl: 'https://fellowship.mlh.io',
+    deadline: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toISOString().split('T')[0], // Exactly 7 days left
+    status: 'Interested',
+    priority: 'High',
+    notes: 'Polishing GitHub profile and open source PR portfolio.',
+    isSaved: true,
+  },
+  {
+    $id: 'opp-7',
+    $createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30).toISOString(),
+    userId: 'demo-user-123',
+    title: 'Microsoft Explore Undergraduate Internship',
+    organization: 'Microsoft',
+    category: 'Internship',
+    description: 'Rotational 12-week program designed for first and second-year college students to explore both Software Engineering and Product Management.',
+    applicationUrl: 'https://careers.microsoft.com/students',
+    deadline: new Date(Date.now() - 1000 * 60 * 60 * 24 * 14).toISOString().split('T')[0], // Expired
+    status: 'Rejected',
+    priority: 'Low',
+    notes: 'Did not advance past final round. Re-apply next year for SWE intern track.',
+    isSaved: false,
+  }
+];
