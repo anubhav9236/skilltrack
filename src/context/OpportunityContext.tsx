@@ -94,7 +94,17 @@ export const OpportunityProvider: React.FC<{ children: React.ReactNode }> = ({ c
       console.error('[OpportunityContext] Failed to load opportunities from Appwrite TablesDB:', err);
       // If collection/table doesn't exist yet, guide user gracefully with actionable message
       if (err?.code === 404) {
-        setError('Appwrite Database or Table not found. Please verify the IDs in your .env or create the schema.');
+        setError('Notice: Table "opportunities" is pending setup in Appwrite Console. Currently using local workspace storage.');
+        const stored = localStorage.getItem(`skilltrack_opps_${user.$id}`);
+        if (stored) {
+          try {
+            setOpportunities(JSON.parse(stored));
+          } catch {
+            setOpportunities(INITIAL_MOCK_OPPORTUNITIES);
+          }
+        } else {
+          setOpportunities(INITIAL_MOCK_OPPORTUNITIES);
+        }
       } else {
         setError(err?.message || 'Could not load opportunities from Appwrite TablesDB.');
       }
@@ -131,9 +141,25 @@ export const OpportunityProvider: React.FC<{ children: React.ReactNode }> = ({ c
       return newOpp;
     }
 
-    const created = await appwriteService.createOpportunity(user.$id, input);
-    setOpportunities(prev => [created, ...prev]);
-    return created;
+    try {
+      const created = await appwriteService.createOpportunity(user.$id, input);
+      setOpportunities(prev => [created, ...prev]);
+      return created;
+    } catch (err: any) {
+      if (err?.code === 404) {
+        const newOpp: Opportunity = {
+          ...input,
+          $id: 'opp-' + Date.now(),
+          $createdAt: new Date().toISOString(),
+          userId: user.$id,
+        };
+        const updated = [newOpp, ...opportunities];
+        setOpportunities(updated);
+        localStorage.setItem(`skilltrack_opps_${user.$id}`, JSON.stringify(updated));
+        return newOpp;
+      }
+      throw err;
+    }
   };
 
   // Edit Opportunity
@@ -147,8 +173,20 @@ export const OpportunityProvider: React.FC<{ children: React.ReactNode }> = ({ c
       return;
     }
 
-    const updated = await appwriteService.updateOpportunity(id, updates);
-    setOpportunities(prev => prev.map(opp => opp.$id === id ? updated : opp));
+    try {
+      const updated = await appwriteService.updateOpportunity(id, updates);
+      setOpportunities(prev => prev.map(opp => opp.$id === id ? updated : opp));
+    } catch (err: any) {
+      if (err?.code === 404 && user) {
+        const updated = opportunities.map(opp => 
+          opp.$id === id ? { ...opp, ...updates, $updatedAt: new Date().toISOString() } : opp
+        );
+        setOpportunities(updated);
+        localStorage.setItem(`skilltrack_opps_${user.$id}`, JSON.stringify(updated));
+        return;
+      }
+      throw err;
+    }
   };
 
   // Delete Opportunity
@@ -160,8 +198,18 @@ export const OpportunityProvider: React.FC<{ children: React.ReactNode }> = ({ c
       return;
     }
 
-    await appwriteService.deleteOpportunity(id);
-    setOpportunities(prev => prev.filter(opp => opp.$id !== id));
+    try {
+      await appwriteService.deleteOpportunity(id);
+      setOpportunities(prev => prev.filter(opp => opp.$id !== id));
+    } catch (err: any) {
+      if (err?.code === 404 && user) {
+        const updated = opportunities.filter(opp => opp.$id !== id);
+        setOpportunities(updated);
+        localStorage.setItem(`skilltrack_opps_${user.$id}`, JSON.stringify(updated));
+        return;
+      }
+      throw err;
+    }
   };
 
   // Toggle Save (Bookmark)
