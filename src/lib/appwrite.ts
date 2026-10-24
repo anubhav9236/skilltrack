@@ -1,8 +1,8 @@
 import { Client, Account, Databases } from 'appwrite';
 
 // Environment variable extraction with sensible defaults for Appwrite Cloud
-export const APPWRITE_ENDPOINT = import.meta.env.VITE_APPWRITE_ENDPOINT || 'https://cloud.appwrite.io/v1';
-export const APPWRITE_PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID || '';
+export const APPWRITE_ENDPOINT = import.meta.env.VITE_APPWRITE_ENDPOINT || 'https://nyc.cloud.appwrite.io/v1';
+export const APPWRITE_PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID || '6adc317c0013180b5f3a';
 export const APPWRITE_DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID || 'skilltrack_db';
 export const APPWRITE_TABLE_ID = 
   import.meta.env.VITE_APPWRITE_TABLE_ID || 
